@@ -39,5 +39,24 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/systemjs/6.3.2/system.min.js"></script>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "react": "/libs/umd/react.development.js",
+          "react-dom": "/libs/umd/react-dom.development.js",
+        }
+      }
+    </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/systemjs/6.3.2/extras/amd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/systemjs/6.3.2/extras/use-default.min.js"></script>
+    <script src="/libs/systemjs/css-extra/css.js"
+    <script type="systemjs-importmap" src="%PUBLIC_URL%/importmap.json"></script>
+    <script>
+      System.import('runtime-main.js');
+      System.import('main.css');
+      System.import('main.js');
+    </script>
+
   </body>
 </html>
