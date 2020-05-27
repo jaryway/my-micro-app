@@ -6,6 +6,7 @@ const webpack = require("webpack");
 const resolve = require("resolve");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ChunkManifestWebpackPlugin = require("chunk-manifest-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -189,8 +190,9 @@ module.exports = function (webpackEnv) {
             path.resolve(info.absoluteResourcePath).replace(/\\/g, "/")),
       // Prevents conflicts when multiple webpack runtimes (from different apps)
       // are used on the same page.
-      jsonpFunction: `webpackJsonp${appPackageJson.name}`,
+      jsonpFunction: `${appPackageJson.name}`,
       libraryTarget: "amd",
+      library: "base-bootstrap",
       // this defaults to 'window', but by setting it to 'this' then
       // module chunks which are built will work in web workers as well.
       globalObject: "this",
@@ -503,7 +505,7 @@ module.exports = function (webpackEnv) {
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              exclude: [/\.(js|mjs|jsx|ts|tsx|ejs)$/, /\.html$/, /\.json$/],
               options: {
                 name: "static/media/[name].[hash:8].[ext]",
               },
@@ -515,13 +517,19 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
+      // new ChunkManifestWebpackPlugin({
+      //   manifestVariable: "manifest",
+      //   // inlineManifest: true,
+      // }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
           {},
           {
             inject: false,
-            template: paths.appHtml,
+            // template: paths.appHtml,
+            template: path.resolve(__dirname, "..", "src/index.template.ejs"),
+            // filename: 'index1.html',
           },
           isEnvProduction
             ? {
@@ -613,7 +621,7 @@ module.exports = function (webpackEnv) {
           //   manifest[file.name] = file.path;
           //   return manifest;
           // }, seed);
-          console.log("filesfilesfiles", files, entrypoints);
+          // console.log("filesfilesfiles", files, entrypoints);
           const entrypointFiles = entrypoints.main.filter(
             (fileName) => !fileName.endsWith(".map")
           );
