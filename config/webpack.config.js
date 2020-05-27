@@ -652,10 +652,14 @@ module.exports = function (webpackEnv) {
       {
         'react': 'react',
         'react-dom': 'react-dom',
+        'react-router-dom': 'react-router-dom',
         'redux': 'redux',
         'redux-thunk': 'redux-thunk',
         'react-redux': 'react-redux',
+        'redux-promise-middleware': 'redux-promise-middleware',
         'single-spa': 'single-spa',
+        'single-spa-react': 'single-spa-react',
+        'history': 'history',
       },
     ],
     // Turn off performance processing because we utilize
