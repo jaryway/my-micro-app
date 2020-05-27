@@ -527,7 +527,7 @@ module.exports = function (webpackEnv) {
           {
             inject: false,
             // template: paths.appHtml,
-            template: path.resolve(__dirname, "..", "src/index.template.ejs"),
+            template: paths.appTemplate,
             // filename: 'index1.html',
           },
           isEnvProduction
@@ -548,12 +548,12 @@ module.exports = function (webpackEnv) {
             : undefined
         )
       ),
-      // Inlines the webpack runtime script. This script is too small to warrant
-      // a network request.
-      // https://github.com/facebook/create-react-app/issues/5358
-      isEnvProduction &&
-        shouldInlineRuntimeChunk &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
+      // // Inlines the webpack runtime script. This script is too small to warrant
+      // // a network request.
+      // // https://github.com/facebook/create-react-app/issues/5358
+      // isEnvProduction &&
+      //   shouldInlineRuntimeChunk &&
+      //   new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
       // Makes some environment variables available in index.html.
       // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
       // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
@@ -612,31 +612,6 @@ module.exports = function (webpackEnv) {
           };
         },
       }),
-      // new ManifestPlugin({
-      //   fileName: "importmap.json",
-      //   publicPath: paths.publicUrlOrPath,
-      //   generate: (seed, files, entrypoints) => {
-      //     // const manifestFiles = files.reduce((manifest, file) => {
-      //     //   manifest[file.name] = file.path;
-      //     //   return manifest;
-      //     // }, seed);
-      //     // console.log("filesfilesfiles", files, entrypoints);
-      //     const entrypointFiles = entrypoints.main.filter(
-      //       (fileName) => !fileName.endsWith(".map")
-      //     );
-
-      //     return {
-      //       imports: {
-      //         // files,
-      //         ...entrypointFiles.reduce(
-      //           (manifest, file) => ({ ...manifest, [file]: file }),
-      //           {}
-      //         ),
-      //       },
-      //       // entrypoints: entrypointFiles,
-      //     };
-      //   },
-      // }),
       // Moment.js is an extremely popular library that bundles large locale files
       // by default due to how webpack interprets its code. This is a practical
       // solution that requires the user to opt into importing specific locales.
