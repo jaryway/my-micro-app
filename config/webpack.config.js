@@ -6,7 +6,6 @@ const webpack = require("webpack");
 const resolve = require("resolve");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ChunkManifestWebpackPlugin = require("chunk-manifest-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -192,7 +191,7 @@ module.exports = function (webpackEnv) {
       // are used on the same page.
       jsonpFunction: `${appPackageJson.name}`,
       libraryTarget: "amd",
-      library: "base-bootstrap",
+      // library: "base-bootstrap",
       // this defaults to 'window', but by setting it to 'this' then
       // module chunks which are built will work in web workers as well.
       globalObject: "this",
@@ -613,31 +612,31 @@ module.exports = function (webpackEnv) {
           };
         },
       }),
-      new ManifestPlugin({
-        fileName: "importmap.json",
-        publicPath: paths.publicUrlOrPath,
-        generate: (seed, files, entrypoints) => {
-          // const manifestFiles = files.reduce((manifest, file) => {
-          //   manifest[file.name] = file.path;
-          //   return manifest;
-          // }, seed);
-          // console.log("filesfilesfiles", files, entrypoints);
-          const entrypointFiles = entrypoints.main.filter(
-            (fileName) => !fileName.endsWith(".map")
-          );
+      // new ManifestPlugin({
+      //   fileName: "importmap.json",
+      //   publicPath: paths.publicUrlOrPath,
+      //   generate: (seed, files, entrypoints) => {
+      //     // const manifestFiles = files.reduce((manifest, file) => {
+      //     //   manifest[file.name] = file.path;
+      //     //   return manifest;
+      //     // }, seed);
+      //     // console.log("filesfilesfiles", files, entrypoints);
+      //     const entrypointFiles = entrypoints.main.filter(
+      //       (fileName) => !fileName.endsWith(".map")
+      //     );
 
-          return {
-            imports: {
-              // files,
-              ...entrypointFiles.reduce(
-                (manifest, file) => ({ ...manifest, [file]: file }),
-                {}
-              ),
-            },
-            // entrypoints: entrypointFiles,
-          };
-        },
-      }),
+      //     return {
+      //       imports: {
+      //         // files,
+      //         ...entrypointFiles.reduce(
+      //           (manifest, file) => ({ ...manifest, [file]: file }),
+      //           {}
+      //         ),
+      //       },
+      //       // entrypoints: entrypointFiles,
+      //     };
+      //   },
+      // }),
       // Moment.js is an extremely popular library that bundles large locale files
       // by default due to how webpack interprets its code. This is a practical
       // solution that requires the user to opt into importing specific locales.

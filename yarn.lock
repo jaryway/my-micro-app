@@ -2841,13 +2841,6 @@ chrome-trace-event@^1.0.2:
   dependencies:
     tslib "^1.9.0"
 
-chunk-manifest-webpack-plugin@^1.1.2:
-  version "1.1.2"
-  resolved "http://192.10.169.216:4873/chunk-manifest-webpack-plugin/-/chunk-manifest-webpack-plugin-1.1.2.tgz#b332efb97c1a23bfd3ca5dcee13aa120df72df59"
-  integrity sha1-szLvuXwaI7/Tyl3O4TqhIN9y31k=
-  dependencies:
-    webpack-core "^0.6.9"
-
 ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
@@ -5282,13 +5275,6 @@ ini@^1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
-
-inline-chunk-manifest-html-webpack-plugin@^2.0.0:
-  version "2.0.0"
-  resolved "http://192.10.169.216:4873/inline-chunk-manifest-html-webpack-plugin/-/inline-chunk-manifest-html-webpack-plugin-2.0.0.tgz#ce60016daca3a14a4bac259514425dbc2957949e"
-  integrity sha1-zmABbayjoUpLrCWVFEJdvClXlJ4=
-  dependencies:
-    webpack-sources "^1.0.1"
 
 inquirer@7.0.4:
   version "7.0.4"

@@ -141,8 +141,6 @@
     ]
   },
   "devDependencies": {
-    "chunk-manifest-webpack-plugin": "^1.1.2",
-    "html-webpack-plugin": "^4.3.0",
-    "inline-chunk-manifest-html-webpack-plugin": "^2.0.0"
+    "html-webpack-plugin": "^4.3.0"
   }
 }
