@@ -49,7 +49,12 @@ window.CONFIG={
 <script><%= compilation.assets[item.substr(htmlWebpackPlugin.files.publicPath.length)].source() %></script>
 <% }) %>
 <script>
-    System.import('base-bootstrap');
+<% htmlWebpackPlugin.files.js.forEach(function(item,i){%>
+ System.import('<%= item %>');
+<% }) %>
 </script>
+<!--<script>
+    System.import('base-bootstrap');
+</script>-->
 </body>
 </html>
