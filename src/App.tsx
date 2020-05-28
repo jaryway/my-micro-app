@@ -4,6 +4,10 @@ import { Provider } from 'react-redux';
 
 import { storeInstance, history } from './Store';
 import { GlobalEventDistributor } from './GlobalEventDistributor';
+import AuthorizeRoute from './components/AuthorizeRoute';
+
+import Home from './Home';
+import LoginPage from './pages/Login';
 
 import logo from './logo.svg';
 import './App.css';
@@ -19,17 +23,13 @@ function App() {
       <Router history={history}>
         <Switch>
           <Route
-            path='auth'
-            render={() => {
-              return <div>auth</div>;
-            }}
+            path='/login'
+            component={LoginPage}
+            // render={() => {
+            //   return <div>auth</div>;
+            // }}
           />
-          <Route
-            path='/'
-            render={() => {
-              return <div>xxxx</div>;
-            }}
-          />
+          <AuthorizeRoute path='/' component={Home} />
         </Switch>
       </Router>
     </Provider>
