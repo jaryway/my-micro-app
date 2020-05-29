@@ -77,10 +77,10 @@ export async function registerApp(
   singleSpa.registerApplication(
     app.name,
     async () => {
-      console.log('xxxxxxxxxxx', app.entrypoints.main);
+      // console.log('xxxxxxxxxxx', app.entrypoints.main);
       return await loadResources(app.entrypoints.main);
     },
-    app && app.name === 'base' ? () => true : checkActive(app.prefix),
+    checkActive(app.prefix),
     customProps
   );
 }
@@ -94,23 +94,24 @@ async function loadResources(resources: string[], appName?: string) {
   let starter: any;
 
   for (let i = 0; i < resources.length; i++) {
-    console.log('singleSpa-loadResources', resources[i]);
+    // console.log('singleSpa-loadResources', resources[i]);
     if (!resources[i].endsWith('.hot-update.js'))
       starter = await window.System.import(`${appName ? `/${appName}` : ''}${resources[i]}`);
-    console.log('singleSpa-loadResources4', starter);
+    // console.log('singleSpa-loadResources4', starter);
   }
 
-  console.log('singleSpa-loadResources', starter);
+  // console.log('singleSpa-loadResources', starter);
   return Promise.resolve(starter);
 }
 //
 export function checkActive(prefix: string | string[], mode: 'Browser' | 'Hash' = 'Browser') {
-  return function () {
-    console.log('checkActive');
+  return function (location: any) {
+    // console.log('checkActive', location);
     //如果该应用 有多个需要匹配的路劲
-    const pathname = mode === 'Browser' ? window.location.pathname : window.location.hash;
+    const pathname = mode === 'Browser' ? location.pathname : location.hash;
+    // console.log('checkActive', prefix, pathname, window.location.pathname);
     if (typeof prefix !== 'string') return prefix.some((m) => pathname.startsWith(`#${m}`));
     // 普通情况
-    return pathname.startsWith(`#${prefix}`);
+    return pathname.startsWith(`${prefix}`);
   };
 }

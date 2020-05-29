@@ -1562,7 +1562,7 @@
 
 "@types/http-proxy@^1.17.4":
   version "1.17.4"
-  resolved "http://192.10.169.216:4873/@types%2fhttp-proxy/-/http-proxy-1.17.4.tgz#e7c92e3dbe3e13aa799440ff42e6d3a17a9d045b"
+  resolved "http://r.cnpmjs.org/@types%2fhttp-proxy/-/http-proxy-1.17.4.tgz#e7c92e3dbe3e13aa799440ff42e6d3a17a9d045b"
   integrity sha1-58kuPb4+E6p5lED/QubToXqdBFs=
   dependencies:
     "@types/node" "*"
@@ -1601,7 +1601,7 @@
 
 "@types/lodash@^4.14.153":
   version "4.14.153"
-  resolved "http://192.10.169.216:4873/@types%2flodash/-/lodash-4.14.153.tgz#5cb7dded0649f1df97938ac5ffc4f134e9e9df98"
+  resolved "http://r.cnpmjs.org/@types%2flodash/-/lodash-4.14.153.tgz#5cb7dded0649f1df97938ac5ffc4f134e9e9df98"
   integrity sha1-XLfd7QZJ8d+Xk4rF/8TxNOnp35g=
 
 "@types/minimatch@*":
@@ -5418,7 +5418,7 @@ http-proxy-middleware@0.19.1:
 
 http-proxy-middleware@^1.0.4:
   version "1.0.4"
-  resolved "http://192.10.169.216:4873/http-proxy-middleware/-/http-proxy-middleware-1.0.4.tgz#425ea177986a0cda34f9c81ec961c719adb6c2a9"
+  resolved "http://r.cnpmjs.org/http-proxy-middleware/-/http-proxy-middleware-1.0.4.tgz#425ea177986a0cda34f9c81ec961c719adb6c2a9"
   integrity sha1-Ql6hd5hqDNo0+cgeyWHHGa22wqk=
   dependencies:
     "@types/http-proxy" "^1.17.4"
@@ -7002,7 +7002,7 @@ micromatch@^3.1.10, micromatch@^3.1.4:
 
 micromatch@^4.0.2:
   version "4.0.2"
-  resolved "http://192.10.169.216:4873/micromatch/-/micromatch-4.0.2.tgz#4fcb0999bf9fbc2fcbdd212f6d629b9a56c39259"
+  resolved "http://r.cnpmjs.org/micromatch/-/micromatch-4.0.2.tgz#4fcb0999bf9fbc2fcbdd212f6d629b9a56c39259"
   integrity sha1-T8sJmb+fvC/L3SEvbWKbmlbDklk=
   dependencies:
     braces "^3.0.1"
@@ -10008,7 +10008,7 @@ single-spa-react@^2.14.0:
 
 single-spa@^5.5.1:
   version "5.5.1"
-  resolved "http://192.10.169.216:4873/single-spa/-/single-spa-5.5.1.tgz#2d9bc2155e3698dab1a1ec97e94e33de193db53b"
+  resolved "http://r.cnpmjs.org/single-spa/-/single-spa-5.5.1.tgz#2d9bc2155e3698dab1a1ec97e94e33de193db53b"
   integrity sha1-LZvCFV42mNqxoeyX6U4z3hk9tTs=
 
 sisteransi@^1.0.4:

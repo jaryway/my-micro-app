@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
-import { createHashHistory as createHistory } from "history";
+import { createBrowserHistory as createHistory } from "history";
 import thunk from "redux-thunk";
 // import promiseMiddleware from 'redux-promise-middleware';
 import { createPromise } from "redux-promise-middleware";
@@ -59,13 +59,13 @@ function _root(state = { rootActiveMenuKey: "" }, action) {
 
 const globalReducers = { namespace: () => "sub1", render, to, _root };
 const createReducer = (asyncReducers) => {
-  console.log("sub1-app.createReducer", asyncReducers);
+  // console.log("sub1-app.createReducer", asyncReducers);
   const appReducer = combineReducers(asyncReducers);
   return (state, action) => {
-    console.log("sub1-app.createReducer.1", action, state);
+    // console.log("sub1-app.createReducer.1", action, state);
     // 把这个 app 的 state 设为初始值，依赖 hsp-utils > 1.3
     if (action.type === "RESET_APP") {
-      console.log("sub1-app.createReducer.RESET_APP", action);
+      // console.log("sub1-app.createReducer.RESET_APP", action);
       state = undefined;
     }
     return appReducer(state, action);

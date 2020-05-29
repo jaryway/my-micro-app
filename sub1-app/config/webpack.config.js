@@ -48,11 +48,14 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
+// process.env.MICRO = process.env.MICRO === 'true';
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
+  const isMicro = process.env.MICRO === 'true';
 
   // Variable used for enabling profiling in Production
   // passed into alias object. Uses a flag if passed into the build command
@@ -63,6 +66,8 @@ module.exports = function (webpackEnv) {
   // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
   // Get environment variables to inject into our app.
   const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
+
+  console.log(typeof process.env.MICRO);
 
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -164,7 +169,7 @@ module.exports = function (webpackEnv) {
       // In development, it does not produce real files.
       filename: isEnvProduction
         ? 'static/js/[name].[contenthash:8].js'
-        : isEnvDevelopment && 'static/js/bundle.js',
+        : isEnvDevelopment && 'static/js/[name].[hash:8].js',
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
@@ -186,7 +191,7 @@ module.exports = function (webpackEnv) {
       libraryTarget: 'amd',
       // this defaults to 'window', but by setting it to 'this' then
       // module chunks which are built will work in web workers as well.
-      globalObject: 'this',
+      // globalObject: 'this',
     },
     optimization: {
       minimize: isEnvProduction,
@@ -499,7 +504,7 @@ module.exports = function (webpackEnv) {
         Object.assign(
           {},
           {
-            inject: false,
+            inject: true,
             template: paths.appHtml,
             chunks: ['main'],
           },
@@ -597,7 +602,7 @@ module.exports = function (webpackEnv) {
           return {
             name: 'sub1',
             appName: 'sub1-app',
-            prefix: '/sub1-app',
+            prefix: '/sub1',
             entrypoints: entrypointFiles,
           };
         },

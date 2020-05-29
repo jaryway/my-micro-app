@@ -4,8 +4,9 @@ import singleSpaReact from 'single-spa-react';
 import RootComponent from './root.component';
 import { storeInstance, history } from './Store';
 
+// console.log('process.env.NODE_ENV', process.env.NODE_ENV, process.env.MICRO);
+
 if (process.env.NODE_ENV === 'development' && !process.env.MICRO) {
-  // console.log('process.env.NODE_ENV',process.env.NODE_ENV)
   // 开发环境直接渲染
   ReactDOM.render(
     <RootComponent
@@ -17,29 +18,29 @@ if (process.env.NODE_ENV === 'development' && !process.env.MICRO) {
   );
 }
 
-function ensureMount(cb: any) {
-  let timer: any = 1;
+// function ensureMount(cb: any) {
+//   let timer: any = 1;
 
-  const callback = () => {
-    if (document.querySelector('#subapp')) {
-      console.log('workflow-app.mount.ensureMount');
-      clearInterval(timer);
-      timer = 0;
-      cb();
-    }
-  };
+//   const callback = () => {
+//     if (document.querySelector('#subapp')) {
+//       console.log('workflow-app.mount.ensureMount');
+//       clearInterval(timer);
+//       timer = 0;
+//       cb();
+//     }
+//   };
 
-  // 进来先执行一次查找，如果找到直接mount，否则轮询一下
-  callback();
+//   // 进来先执行一次查找，如果找到直接mount，否则轮询一下
+//   callback();
 
-  timer && (timer = setInterval(callback, 1));
-  // 不管如何 3s 钟后都取消定时器
-  setTimeout(() => {
-    console.log('workflow-app.mount.ensureMount', '定时器被取消了');
-    clearInterval(timer);
-    timer = 0;
-  }, 3000);
-}
+//   timer && (timer = setInterval(callback, 1));
+//   // 不管如何 3s 钟后都取消定时器
+//   setTimeout(() => {
+//     console.log('workflow-app.mount.ensureMount', '定时器被取消了');
+//     clearInterval(timer);
+//     timer = 0;
+//   }, 3000);
+// }
 
 const reactLifecycles = singleSpaReact({
   React,
@@ -88,7 +89,7 @@ function domElementGetter() {
 
 export const bootstrap = [
   (props: any) => {
-    console.log('sub1-app-bootstrap', props);
+    // console.log('sub1-app-bootstrap', props);
     return Promise.resolve();
   },
   reactLifecycles.bootstrap,

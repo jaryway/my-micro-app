@@ -11,7 +11,7 @@ import { Router, Switch } from 'react-router-dom';
 // const { AuthorizedRoute } = Authorized;
 
 function RootComponent({ store, history, globalEventDistributor }) {
-  console.log('sub1-app');
+  // console.log('sub1-app-root.component');
   return <div>sub1-app</div>;
 }
 
