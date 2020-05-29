@@ -4,6 +4,10 @@ import { Provider } from 'react-redux';
 import GlobalEventDistributorContext from './GlobalEventDistributorContext';
 import { storeInstance, history } from './Store';
 import { GlobalEventDistributor } from './GlobalEventDistributor';
+import AuthorizeRoute from './components/AuthorizeRoute';
+
+import Home from './Home';
+import LoginPage from './pages/Login';
 
 import logo from './logo.svg';
 import './App.css';
@@ -16,25 +20,16 @@ function App() {
   return (
     <Provider store={storeInstance}>
       <GlobalEventDistributorContext.Provider value={globalEventDistributor}>
-        {/* <BasicLayout {...customProps} /> */}
         <Router history={history}>
           <Switch>
             <Route
-              path='authorize'
-              render={() => {
-                return (
-                  <div>
-                    <button onClick>登录</button>
-                  </div>
-                );
-              }}
+              path='/login'
+              component={LoginPage}
+              // render={() => {
+              //   return <div>auth</div>;
+              // }}
             />
-            <Route
-              path='/'
-              render={() => {
-                return <div>xxxx</div>;
-              }}
-            />
+            <AuthorizeRoute path='/' component={Home} />
           </Switch>
         </Router>
       </GlobalEventDistributorContext.Provider>
