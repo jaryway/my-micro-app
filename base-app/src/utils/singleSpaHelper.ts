@@ -35,6 +35,8 @@ export function registerSubApps(globalEventDistributor: GlobalEventDistributor) 
       })
       .catch(() => ({}));
   });
+
+  singleSpa.start();
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -68,13 +70,14 @@ export async function registerApp(
     // 注册到全局
     globalEventDistributor.registerStore(storeModule.storeInstance);
   }
-  // console.log('register', app);
+  console.log('register', app);
   // 准备自定义的props,传入每一个单独工程项目
   customProps.store = storeModule;
 
   singleSpa.registerApplication(
     app.name,
     async () => {
+      console.log('xxxxxxxxxxx', app.entrypoints.main);
       return await loadResources(app.entrypoints.main);
     },
     app && app.name === 'base' ? () => true : checkActive(app.prefix),
@@ -94,6 +97,7 @@ async function loadResources(resources: string[], appName?: string) {
     console.log('singleSpa-loadResources', resources[i]);
     if (!resources[i].endsWith('.hot-update.js'))
       starter = await window.System.import(`${appName ? `/${appName}` : ''}${resources[i]}`);
+    console.log('singleSpa-loadResources4', starter);
   }
 
   console.log('singleSpa-loadResources', starter);
@@ -102,6 +106,7 @@ async function loadResources(resources: string[], appName?: string) {
 //
 export function checkActive(prefix: string | string[], mode: 'Browser' | 'Hash' = 'Browser') {
   return function () {
+    console.log('checkActive');
     //如果该应用 有多个需要匹配的路劲
     const pathname = mode === 'Browser' ? window.location.pathname : window.location.hash;
     if (typeof prefix !== 'string') return prefix.some((m) => pathname.startsWith(`#${m}`));

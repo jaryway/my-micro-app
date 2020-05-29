@@ -30,9 +30,18 @@ function App() {
               //   return <div>auth</div>;
               // }}
             />
-            <SecurityLayout globalEventDistributor={globalEventDistributor}>
-              <Route path='/' component={Home} />
-            </SecurityLayout>
+            <Route
+              render={(props: any) => {
+                console.log('xxxcvasdfas', props);
+                return (
+                  <SecurityLayout globalEventDistributor={globalEventDistributor}>
+                    <Switch>
+                      <Route path='/' component={Home} />
+                    </Switch>
+                  </SecurityLayout>
+                );
+              }}
+            />
           </Switch>
         </Router>
       </GlobalEventDistributorContext.Provider>
