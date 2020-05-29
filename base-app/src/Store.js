@@ -41,13 +41,13 @@ function to(state = initialState, action) {
 
 function mount(state = initialState1, action) {
   if (action.type === 'WILL_MOUNT') {
-    console.log('base-app.willMount', action, state);
+    // console.log('base-app.willMount', action, state);
     return { ...state, mountApps: [...state.mountApps, action.payload.mount] };
   }
 
   if (action.type === 'DID_MOUNT') {
     const { mountApps } = state;
-    console.log('base-app.didMount', action, mountApps);
+    // console.log('base-app.didMount', action, mountApps);
 
     for (let i = 0; i < mountApps.length; i++) {
       const mountApp = mountApps[i];
@@ -67,7 +67,7 @@ function _root(
 ) {
   // 注册子 App
   if (action.type === 'REGISTER_APP') {
-    console.log('base-app.REGISTER_APP', action, state);
+    // console.log('base-app.REGISTER_APP', action, state);
     // 注册子 APP 的时候，如果已经登录了，直接 mount
     if (state.appStatus === 'READY') {
       action.payload.mount();
@@ -79,7 +79,7 @@ function _root(
   // 挂载子 App base-app 挂载并获取好用户信息后，把待挂载的其他应用挂载上
   if (action.type === 'CHANGE_APP_STATUS') {
     const { registerApps } = state;
-    console.log('base-app.CHANGE_APP_STATUS', action, registerApps);
+    // console.log('base-app.CHANGE_APP_STATUS', action, registerApps);
     if (action.payload === 'READY') {
       for (let i = 0; i < registerApps.length; i++) {
         const registerApp = registerApps[i];
@@ -99,7 +99,7 @@ function _root(
   }
 
   if (action.type === 'ROOT_MENU_LIST') {
-    console.log('ROOT_MENU_LIST', action.payload);
+    // console.log('ROOT_MENU_LIST', action.payload);
     return { ...state, rootMenuList: action.payload };
   }
 

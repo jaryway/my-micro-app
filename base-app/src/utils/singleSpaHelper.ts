@@ -106,7 +106,7 @@ async function loadResources(resources: string[], appName?: string) {
 //
 export function checkActive(prefix: string | string[], mode: 'Browser' | 'Hash' = 'Browser') {
   return function (location: any) {
-    // console.log('checkActive', location);
+    console.log('checkActive', location);
     //如果该应用 有多个需要匹配的路劲
     const pathname = mode === 'Browser' ? location.pathname : location.hash;
     // console.log('checkActive', prefix, pathname, window.location.pathname);

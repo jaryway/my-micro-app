@@ -5,23 +5,8 @@ import User from './pages/User';
 import Car from './pages/Car';
 import Coffee from './pages/Coffee';
 
-function getUserInfo() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() * 10 === 9) {
-        return reject();
-      }
-      resolve({ userId: 'xiaoming', userName: '黄小暧' });
-    }, 3000);
-  });
-}
-
-function registerSubApps(userInfo: any) {
-  console.log('注册子应用', userInfo);
-}
-
 export default function Home({ match, history }: any) {
-  console.log('home', match, history);
+  // console.log('home', match, history);
   // // 1、加载菜单信息
   // // 2、加载用户信息
   // // 2.1 注册子站点并同步用户信息

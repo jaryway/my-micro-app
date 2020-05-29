@@ -14,10 +14,6 @@ function getUserInfo() {
   });
 }
 
-// function registerSubApps(userInfo: any) {
-//   console.log('注册子应用', userInfo);
-// }
-
 function SecurityLayout({ dispatch, children, currentEmp, loading, globalEventDistributor }: any) {
   // 1、加载菜单信息
   // 2、加载用户信息
@@ -31,6 +27,7 @@ function SecurityLayout({ dispatch, children, currentEmp, loading, globalEventDi
     if (currentEmp && currentEmp.userId) return;
 
     console.log('加载用户信息');
+
     dispatch({ type: 'APP_STATUS', payload: true });
     getUserInfo()
       .then((userInfo) => {
@@ -46,7 +43,7 @@ function SecurityLayout({ dispatch, children, currentEmp, loading, globalEventDi
   }, [isLogedIn, currentEmp, dispatch, globalEventDistributor]);
 
   const redirect = encodeURIComponent(window.location.href);
-  console.log('userInfo', currentEmp, loading);
+  // console.log('userInfo', currentEmp, loading);
 
   // 没有登录，去登录
   if (!isLogedIn && window.location.pathname !== '/login') {

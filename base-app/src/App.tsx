@@ -11,28 +11,23 @@ import LoginPage from './pages/Login';
 
 // import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
 import Home from './Home';
 
 const globalEventDistributor = new GlobalEventDistributor();
 globalEventDistributor.registerStore(storeInstance);
 
 function App() {
-  console.log('globalEventDistributor', globalEventDistributor);
+  // console.log('globalEventDistributor', globalEventDistributor);
   return (
     <Provider store={storeInstance}>
       <GlobalEventDistributorContext.Provider value={globalEventDistributor}>
         <Router history={history}>
           <Switch>
-            <Route
-              path='/login'
-              component={LoginPage}
-              // render={() => {
-              //   return <div>auth</div>;
-              // }}
-            />
+            <Route path='/login' component={LoginPage} />
             <Route
               render={(props: any) => {
-                console.log('xxxcvasdfas', props);
+                // console.log('xxxcvasdfas', props);
                 return (
                   <SecurityLayout globalEventDistributor={globalEventDistributor}>
                     <Switch>
