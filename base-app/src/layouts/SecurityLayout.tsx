@@ -14,6 +14,34 @@ function getUserInfo() {
   });
 }
 
+function getMenuInfo() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() * 10 === 9) {
+        return reject();
+      }
+      resolve([
+        {
+          key: 'k-1',
+          title: 'Navigation One',
+          children: [
+            { key: 'k-1-1', title: 'Sub menu1' },
+            { key: 'k-1-2', title: 'Sub menu2' },
+          ],
+        },
+        {
+          key: 'k-2',
+          title: 'Navigation Two',
+          children: [
+            { key: 'k-2-1', title: 'Sub menu1' },
+            { key: 'k-2-2', title: 'Sub menu2' },
+          ],
+        },
+      ]);
+    }, 3000);
+  });
+}
+
 function SecurityLayout({ dispatch, children, currentEmp, loading, globalEventDistributor }: any) {
   // 1、加载菜单信息
   // 2、加载用户信息

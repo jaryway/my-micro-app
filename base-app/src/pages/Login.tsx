@@ -10,7 +10,7 @@ function LoginPage({ history }: any) {
     }).then((token) => {
       localStorage.setItem('token', JSON.stringify(token));
 
-      history.replace('/home');
+      history.replace('/');
     });
   }
 

@@ -35,7 +35,7 @@ export function registerSubApps(globalEventDistributor: GlobalEventDistributor) 
       })
       .catch(() => ({}));
   });
-
+  console.log('registerSubApps-ok');
   singleSpa.start();
 }
 
@@ -70,7 +70,7 @@ export async function registerApp(
     // 注册到全局
     globalEventDistributor.registerStore(storeModule.storeInstance);
   }
-  console.log('register', app);
+  // console.log('register', app);
   // 准备自定义的props,传入每一个单独工程项目
   customProps.store = storeModule;
 
@@ -78,11 +78,17 @@ export async function registerApp(
     app.name,
     async () => {
       // console.log('xxxxxxxxxxx', app.entrypoints.main);
-      return await loadResources(app.entrypoints.main);
+      console.log('loading component', app.entrypoints.main);
+      return await loadResources(app.entrypoints.main).then((resp) => {
+        console.log('loaded component');
+        return resp;
+      });
     },
     checkActive(app.prefix),
     customProps
   );
+
+  // console.log('register-end', app);
 }
 
 /**
@@ -94,7 +100,7 @@ async function loadResources(resources: string[], appName?: string) {
   let starter: any;
 
   for (let i = 0; i < resources.length; i++) {
-    // console.log('singleSpa-loadResources', resources[i]);
+    console.log('singleSpa-loadResources', resources[i]);
     if (!resources[i].endsWith('.hot-update.js'))
       starter = await window.System.import(`${appName ? `/${appName}` : ''}${resources[i]}`);
     // console.log('singleSpa-loadResources4', starter);

@@ -5,7 +5,7 @@ function User() {
   return (
     <div>
       <p>User</p>
-      <Button type='primary'>LogOut</Button>
+      {/* <Button type='primary'>LogOut</Button> */}
     </div>
   );
 }

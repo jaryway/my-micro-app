@@ -5,6 +5,7 @@ import GlobalEventDistributorContext from './GlobalEventDistributorContext';
 import { storeInstance, history } from './Store';
 import { GlobalEventDistributor } from './GlobalEventDistributor';
 import SecurityLayout from './layouts/SecurityLayout';
+import BasicLayout from './layouts/BasicLayout';
 
 // import Home from './Home';
 import LoginPage from './pages/Login';
@@ -30,9 +31,11 @@ function App() {
                 // console.log('xxxcvasdfas', props);
                 return (
                   <SecurityLayout globalEventDistributor={globalEventDistributor}>
-                    <Switch>
-                      <Route path='/' component={Home} />
-                    </Switch>
+                    <BasicLayout {...props}>
+                      <Switch>
+                        <Route path='/' component={Home} />
+                      </Switch>
+                    </BasicLayout>
                   </SecurityLayout>
                 );
               }}
