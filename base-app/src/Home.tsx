@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { Route, Switch, Link } from 'react-router-dom';
-import { Button,Spin } from 'antd';
+import { connect } from 'react-redux';
+import { Button, Spin } from 'antd';
 import User from './pages/User';
 import Car from './pages/Car';
 import Coffee from './pages/Coffee';
 
-export default function Home({ match, history }: any) {
+function Home({ match, history, subAppLoading = false }: any) {
   return (
     <div id='subapp'>
       <Switch>
@@ -18,7 +19,7 @@ export default function Home({ match, history }: any) {
           path={['/*-app', '/sub1', '/sub2', '/sub3']}
           render={() => {
             // console.log('sub-app', defaultUrl, '命中子站点路由');
-            return <Spin />;
+            return <Spin spinning={subAppLoading} size='large' />;
           }}
         />
         <Route
@@ -30,3 +31,8 @@ export default function Home({ match, history }: any) {
     </div>
   );
 }
+
+export default connect((state: any) => {
+  // console.log('xxxxx', state);
+  return { subAppLoading: state._root.subAppLoading };
+})(Home);

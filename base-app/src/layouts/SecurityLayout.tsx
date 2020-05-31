@@ -56,13 +56,13 @@ function SecurityLayout({ dispatch, children, currentEmp, loading, globalEventDi
 
     console.log('加载用户信息');
 
-    dispatch({ type: 'APP_STATUS', payload: true });
+    dispatch({ type: 'APP_LOADING', payload: true });
     getUserInfo()
       .then((userInfo) => {
         // 加载用户信息成功
         console.log('加载用户信息成功');
         dispatch({ type: 'CURRENT_EMP', payload: userInfo });
-        dispatch({ type: 'APP_STATUS', payload: false });
+        dispatch({ type: 'APP_LOADING', payload: false });
         registerSubApps(globalEventDistributor);
       })
       .catch(() => {

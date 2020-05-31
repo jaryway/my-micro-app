@@ -94,8 +94,13 @@ function _root(
     return { ...state, currentEmp: action.payload };
   }
 
-  if (action.type === 'APP_STATUS') {
-    return { ...state, loading: action.payload };
+  if (action.type === 'APP_LOADING') {
+    return { ...state, appLoading: action.payload };
+  }
+
+  if (action.type === 'SUB_APP_LOADING') {
+    console.log('SUB_APP_LOADING');
+    return { ...state, subAppLoading: action.payload };
   }
 
   if (action.type === 'ROOT_MENU_LIST') {
